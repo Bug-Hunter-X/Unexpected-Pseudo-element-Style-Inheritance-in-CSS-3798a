@@ -1,0 +1,22 @@
+The solution involves ensuring that the pseudo-element's styling is confined to itself and doesn't leak to its parent element's children:
+
+```css
+.container {
+  background-color: lightblue;
+  position: relative; /* Necessary for absolute positioning of the pseudo-element */
+}
+
+.container::before {
+  content: 'This is a pseudo-element.';
+  background-color: lightcoral;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.container span {
+  background-color: lightgreen;
+}
+```
+
+By explicitly positioning the pseudo-element using `position: absolute`, we isolate its styling from the rest of the container, resolving the unintended inheritance.
