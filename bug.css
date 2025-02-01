@@ -1,0 +1,20 @@
+The following CSS code snippet demonstrates an issue where a pseudo-element selector is unexpectedly overriding a more specific selector:
+
+```css
+.container {
+  background-color: lightblue;
+}
+
+.container::before {
+  content: 'This is a pseudo-element.';
+  background-color: lightcoral;
+}
+
+.container span {
+  background-color: lightgreen;
+}
+```
+
+Notice how the `span` element inside `.container` inherits the background color of the pseudo-element and not the one defined for the `.container` class. This is counterintuitive because the `span` selector is more specific.
+
+This behavior is caused by pseudo-elements affecting the element's styling in ways that are not immediately apparent, especially when dealing with complex CSS rules and inheritance.
